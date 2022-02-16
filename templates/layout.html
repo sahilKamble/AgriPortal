@@ -3,13 +3,10 @@
 
 <head>
 	<title>{{ title }}</title>
-	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
 
 	<!-- for-mobile-apps -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
-	<meta name="keywords" content="Agro Harvest Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 
 	<style>
 		html {
@@ -130,8 +127,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<link href="{{ url_for('static', filename='css/style.css') }}" rel='stylesheet' type='text/css' />
 	<!-- custom css -->
 	<link href="{{ url_for('static', filename='css/font-awesome.min.css') }}" rel="stylesheet"><!-- fontawesome css -->
-	<!-- //css files -->
-	<!-- <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png?') }}"> -->
+
 
 
 	<script type="text/JavaScript" src="{{ url_for('static', filename='scripts/cities.js') }}"></script>
@@ -155,10 +151,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 
 	<!-- Navigation -->
+	{% set home_class = 'nav-item' %}
+	{% set crop_class = 'nav-item' %}
+	{% set fert_class = 'nav-item' %}
+	{% set disease_class = 'nav-item' %}
+	{% if request.path == '/' %}
+		{% set home_class = 'nav-item active' %}
+	{% endif %}
+	{% if request.path == '/crop-recommend' %}
+		{% set crop_class = 'nav-item active' %}
+	{% endif %}
+	{% if request.path == '/crop-predict' %}
+		{% set crop_class = 'nav-item active' %}
+	{% endif %}
+	{% if request.path == '/fertilizer' %}
+		{% set fert_class = 'nav-item active' %}
+	{% endif %}
+	{% if request.path == '/fertilizer-predict' %}
+		{% set fert_class = 'nav-item active' %}
+	{% endif %}
+	{% if request.path == '/disease-predict' %}
+		{% set disease_class = 'nav-item active' %}
+	{% endif %}
+
+
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top" style="background-color: #1C00ff00;">
 		<div class="container">
 			<a class="navbar-brand" href="{{ url_for('home') }}">
-				<img src="{{ url_for('static', filename='images/logo.jpg') }}" style="width: 90px; height: 55px" alt="">
+				AgriPortal
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -166,18 +186,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active">
+					<li class="{{ home_class }}">
 						<a class="nav-link" href="{{ url_for('home') }}">Home
-							<span class="sr-only">(current)</span>
+							<!-- <span class="sr-only">(current)</span> -->
 						</a>
 					</li>
-					<li class="nav-item">
+					<li class="{{ crop_class }}">
 						<a class="nav-link" href="{{ url_for('crop_recommend') }}">Crop</a>
 					</li>
-					<li class="nav-item">
+					<li class="{{ fert_class }}">
 						<a class="nav-link" href="{{ url_for('fertilizer_recommendation') }}">Fertilizer</a>
 					</li>
-					<li class="nav-item">
+					<li class="{{ disease_class }}">
 						<a class="nav-link" href="{{ url_for('disease_prediction') }}">Disease</a>
 					</li>
 				</ul>
@@ -185,45 +205,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</nav>
 
-
-
-
 	{% block body %} {% endblock %}
-
-	<!-- footer -->
-	<footer class="text-center py-5">
-		<div class="container py-md-3">
-			<!-- logo -->
-			<h2 class="logo2 text-center">
-				<a href="{{ url_for('home') }}">
-					Harvestify
-				</a>
-			</h2>
-			<!-- //logo -->
-			<!-- address -->
-			<div class="contact-left-footer mt-4">
-
-
-
-
-
-				<!-- <a href="community.html">Community</a> -->
-				</p>
-			</div>
-			<div class="w3l-copy text-center">
-				<p class="text-da">An Environmental Intelligence Startup<br> </p>
-			</div>
-			<p class="homelogo">
-			<p>Made with ❤️ by Atharva</p>
-			<p>&copy; Copyright 2022 Atharva Ingle</p>
-			
-		</div>
-	</footer>
-	<!-- //footer -->
-
-	<!-- move top icon -->
-	<a href="#home" class="move-top text-center"></a>
-	<!-- //move top icon -->
 </body>
 
 </html>
