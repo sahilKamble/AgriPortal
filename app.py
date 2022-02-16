@@ -140,21 +140,20 @@ def crop_prediction():
         K = int(request.form['pottasium'])
         ph = float(request.form['ph'])
         rainfall = float(request.form['rainfall'])
-        temperature = float(request.form['temperature'])
-        humidity = float(request.form['humidity'])
-        # city = request.form.get("city")
-        data = np.array([[N, P, K, temperature, humidity, ph, rainfall]])
-        my_prediction = crop_recommendation_model.predict(data)
-        final_prediction = my_prediction[0]
-        return render_template('crop-result.html', prediction=final_prediction, title=title)
+        # temperature = float(request.form['temperature'])
+        # humidity = float(request.form['humidity'])
+        city = request.form.get("city")
+        
 
-        # if weather_fetch(city) != None:
-        #     temperature, humidity = weather_fetch(city)
-        #     app.logger.info('temp = %d, humidity =  %d', temperature, humidity)
-
-        # else:
-
-        #     return render_template('try_again.html', title=title)
+        if weather_fetch(city) != None:
+            temperature, humidity = weather_fetch(city)
+            app.logger.info('temp = %d, humidity =  %d', temperature, humidity)
+            data = np.array([[N, P, K, temperature, humidity, ph, rainfall]])
+            my_prediction = crop_recommendation_model.predict(data)
+            final_prediction = my_prediction[0]
+            return render_template('crop-result.html', prediction=final_prediction, title=title)
+        else:
+            return render_template('try_again.html', title=title)
 
 
 # render fertilizer recommendation result page
