@@ -11,7 +11,7 @@ import io
 import torch
 from torchvision import transforms
 from PIL import Image
-from utils.model import ResNet9
+from utils.model import ResNet9, ResNet
 
 # Loading plant disease classification model
 disease_classes = ['Apple___Apple_scab',
@@ -53,10 +53,11 @@ disease_classes = ['Apple___Apple_scab',
                    'Tomato___Tomato_mosaic_virus',
                    'Tomato___healthy']
 
-disease_model_path = 'models/plant_disease_model.pth'
-disease_model = ResNet9(3, len(disease_classes))
-disease_model.load_state_dict(torch.load(
-    disease_model_path, map_location=torch.device('cpu')))
+disease_model_path = 'models/plant_disease_model_50.pth'
+# disease_model = ResNet9(3, len(disease_classes))
+# disease_model.load_state_dict(torch.load(
+#     disease_model_path, map_location=torch.device('cpu')))
+disease_model = torch.load(disease_model_path, map_location=torch.device('cpu'))
 disease_model.eval()
 
 # Loading crop recommendation model
@@ -85,7 +86,7 @@ def weather_fetch(city_name):
 
 def predict_image(img, model=disease_model):
     transform = transforms.Compose([
-        transforms.Resize(256),
+        transforms.Resize((32,32)),
         transforms.ToTensor(),
     ])
     image = Image.open(io.BytesIO(img))
@@ -211,15 +212,15 @@ def disease_prediction():
         file = request.files.get('file')
         if not file:
             return render_template('disease.html', title=title)
-        try:
-            img = file.read()
+        # try:
+        img = file.read()
 
-            prediction = predict_image(img)
+        prediction = predict_image(img)
 
-            prediction = Markup(str(disease_dic[prediction]))
-            return render_template('disease-result.html', prediction=prediction, title=title)
-        except:
-            pass
+        prediction = Markup(str(disease_dic[prediction]))
+        return render_template('disease-result.html', prediction=prediction, title=title)
+        # except:
+        #     pass
     return render_template('disease.html', title=title)
 
 
