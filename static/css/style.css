@@ -135,7 +135,7 @@ nav a {
     padding-left: 0;
     padding-right: 0;
     padding: 10px 0;
-    font-weight: 700;
+    font-weight: 900;
 }
 
 nav ul li ul li:hover {
@@ -157,6 +157,7 @@ nav ul ul {
     position: absolute;
     /* has to be the same number as the "line-height" of "nav a" */
     top: 30px;
+    font-weight: 900;
     background: #fff;
     padding: 10px;
 }
