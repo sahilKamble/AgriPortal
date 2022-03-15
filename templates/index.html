@@ -1,56 +1,78 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-	<div class="home-body">
-		<div class="container">
-			<div class="screen-1" style="height:90vh; background-color:red">
-				<div class="text-center">
-					<img src="../static/images/Country side-bro.svg" height="350rem"/>
-					<h1 class="text-wh">Agri - Portal</h1>
-					<br>
-					<h2>The one stop solution for every farmers needs</h2>
-				</div>
+
+<style>
+	.landing {
+		height: 90vh;
+	}
+
+	.svg-1 {
+		height: 70vh;
+		padding-left: 10rem;
+		padding-top: 5rem;
+		background-color: #EDF2FB;
+		margin: 0;
+	}
+
+	.svg-2 {
+		height: 70vh;
+		padding-left: 10rem;
+		padding-top: 5rem;
+		padding-right: 5rem;
+		margin: 0;
+	}
+
+	.row {
+		margin: 0;
+	}
+</style>
+
+<div class="home-body">
+	<div class="contents">
+		<div class="landing">
+			<div class="text-center">
+				<img src="../static/images/Country side-bro.svg" style="height:60vh;" />
+				<h1 class="font-weight-bold">Agri - Portal</h1>
+				<br>
+				<h2 class="font-weight-bold">The one stop solution for every farmer's needs</h2>
 			</div>
-			<div class="screen-2" style="height:90vh; background-color:purple">
-				<div class="w3layouts-banner-info row">
-					<div class="col">
-						<h4 class="text-wh mx-auto my-4"><strong> Here are some questions we'll answer</strong></h4>
-						<p class="text-li mx-auto mt-2">
-							1. What crop to plant here? <br>
-							2. What fertilizer to use? <br>
-							3. Which disease do your crop have?<br>
-							4. How to cure the disease?
-						</p>
-					</div>
-					<div class="col">
-						<img src="../static/images/Farmer-amico.svg" height="350rem" alt="farmersvg">
-					</div>
-				</div>
-			</div>
-			
 		</div>
-	</div>
-<!-- <section class="banner_w3lspvt" id="home">
-	<div class="csslider infinity" id="slider1">
-	
-				<div class="banner-top">
-					<div class="overlay">
-						<div class="container">
-							<div class="w3layouts-banner-info text-center">
-								<h3 class="text-wh">Agri - Portal</h3>
-								<br>
-								<h4 class="text-wh mx-auto my-4"><strong> Here are some questions we'll answer</strong></h4>
-								<p class="text-li mx-auto mt-2">
-									1. What crop to plant here? <br>
-									2. What fertilizer to use? <br>
-									3. Which disease do your crop have?<br>
-									4. How to cure the disease?</p>
-							</div>
-						</div>
-					</div>
+		<div class="svg-1">
+			<div class="row">
+				<div class="col-sm">
+					<h4 class="mx-auto my-4 font-weight-bold"><strong> Here are some questions we'll answer</strong>
+					</h4>
+					<p class="text-li mx-auto mt-2">
+						1. What crop to plant here? <br>
+						2. What fertilizer to use? <br>
+						3. Which disease do your crop have?<br>
+						4. How to cure the disease?
+					</p>
 				</div>
+				<div class="col-sm">
+					<img src="../static/images/Farmer-amico.svg" height="350rem" alt="farmersvg">
+				</div>
+			</div>
+		</div>
+		<div class="svg-2">
+			<div class="row">
+				<div class="col-sm">
+					<img src="../static/images/Server-pana.svg" height="350rem" alt="farmersvg">
+				</div>
+				<div class="col-sm">
+					<h4 class="mx-auto my-4 font-weight-bold"><strong> About us</strong>
+					</h4>
+					<p class="text-li mx-auto mt-2">
+						We use state-of-the-art machine learning and deep learning technologies to help you guide through the entire farming process. Make informed decisions to understand the demographics of your area, understand the factors that affect your crop and keep them healthy for a super awesome successful yield.
+					</p>
+				</div>
+			</div>
+		</div>
+
 	</div>
-</section> -->
+</div>
+
 </html>
 
 {% endblock %}
