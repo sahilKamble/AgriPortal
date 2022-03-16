@@ -1,156 +1,134 @@
 {% extends 'layout.html' %} {% block body %}
 
 <style>
-  .input {
-    background-color: #f0fdf4;
-    height: 90vh;
-    padding-left: 1rem;
-    padding-right: 5rem;
-    padding-top: 5rem;
-    margin: 0;
-  }
-
-  .col-sm {
-    margin: 0;
-  }
-
-  .row {
-    margin: 0;
-  }
-
-  .crop-img-container {
-    background-color: #f0fdf4;
-  }
-
-  .crop-img {
-    width: 40vw;
-    margin: 2rem auto;
-  }
-
-  .btn {
-    background-color: #024033;
-    border: #024033;
-  }
-
+    .input {
+        background-color: #f0fdf4;
+        height: 90vh;
+        padding-left: 1rem;
+        padding-right: 5rem;
+        padding-top: 3rem;
+        margin: 0;
+    }
+    
+    .col-sm {
+        margin: 0;
+    }
+    
+    .row {
+        margin: 0;
+    }
+    
+    .crop-img-container {
+        background-color: #f0fdf4;
+    }
+    
+    .crop-img {
+        width: 40vw;
+        margin: 2rem auto;
+    }
+    
+    .btn {
+        background-color: #024033;
+        border: #024033;
+    }
 </style>
 <!--Form Section-->
 <div class="row crop-img-container">
-  <div class="col-7 text-center">
-    <img src="../static/images/Environment-rafiki.svg" class="crop-img" />
-  </div>
-  <div class="col-5 input">
-    <div class="row">
-      <div class="col-sm">
-        <h4>
-          <b>Enter the following details to get information about which crop you can grow.</b>
-        </h4>
-      </div>
-    </div>  
-    <br />
-    <div>
-      <form method="POST" action="{{ url_for('crop_prediction') }}">
+    <div class="col-7 text-center">
+        <img src="../static/images/Environment-rafiki.svg" class="crop-img" />
+    </div>
+    <div class="col-5 input">
         <div class="row">
-          <div class="col-sm">
-            <div class="form-group">
-              <label for="Nitrogen" style="font-size: 17px"><b>Nitrogen</b></label>
-              <input type="number" class="form-control" id="Nitrogen" name="nitrogen" placeholder="Enter the value"
-                style="font-weight: bold" required />
+            <div class="col-sm">
+                <h4>
+                    <b>Enter the following details to get information about which crop you can grow.</b>
+                </h4>
             </div>
-          </div>
-          <div class="col-sm">
-            <div class="form-group">
-              <label for="Phosphorous" style="font-size: 17px"><b>Phosphorous</b></label>
-              <input type="number" class="form-control" id="Phosphorous" name="phosphorous"
-                placeholder="Enter the value" style="font-weight: bold" required />
-            </div>
-          </div>
         </div>
+        <!-- <br /> -->
+        <div>
+            <form method="POST" action="{{ url_for('crop_prediction') }}">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="Nitrogen" style="font-size: 17px"><b>Nitrogen</b></label>
+                            <input type="number" class="form-control" id="Nitrogen" name="nitrogen" placeholder="Enter the value" style="font-weight: bold" required />
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="Phosphorous" style="font-size: 17px"><b>Phosphorous</b></label>
+                            <input type="number" class="form-control" id="Phosphorous" name="phosphorous" placeholder="Enter the value" style="font-weight: bold" required />
+                        </div>
+                    </div>
+                </div>
 
-        <div class="row">
-          <div class="col-sm">
-            <div class="form-group">
-              <label for="Pottasium" style="font-size: 17px"><b>Pottasium</b></label>
-              <input type="number" class="form-control" id="Pottasium" name="pottasium" placeholder="Enter the value"
-                style="font-weight: bold" required />
-            </div>
-          </div>
-          <div class="col-sm">
-            <div class="form-group">
-              <label for="ph" style="font-size: 17px"><b>ph level</b></label>
-              <input type="number" step="0.01" class="form-control" id="ph" name="ph" placeholder="Enter the value"
-                style="font-weight: bold" required />
-            </div>
-          </div>
-        </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="Pottasium" style="font-size: 17px"><b>Pottasium</b></label>
+                            <input type="number" class="form-control" id="Pottasium" name="pottasium" placeholder="Enter the value" style="font-weight: bold" required />
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="ph" style="font-size: 17px"><b>ph level</b></label>
+                            <input type="number" step="0.01" class="form-control" id="ph" name="ph" placeholder="Enter the value" style="font-weight: bold" required />
+                        </div>
+                    </div>
+                </div>
 
-        <div class="row">
-          <div class="col-sm">
-            <div class="form-group">
-              <label for="Rainfall" style="font-size: 17px"><b>Rainfall (in mm)</b></label>
-              <input type="number" step="0.01" class="form-control" id="Rainfall" name="rainfall"
-                placeholder="Enter the value" style="font-weight: bold" required />
-            </div>
-          </div>
-          <div class="col-sm">
-            <div class="form-group">
-              <label for="Temperature" style="font-size: 17px"><b>Temperature (in Degree)</b></label>
-              <input type="number" step="0.01" class="form-control" id="Temperature" name="temperature"
-                placeholder="Enter the value" style="font-weight: bold" required />
-            </div>
-          </div>
-        </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="Rainfall" style="font-size: 17px"><b>Rainfall (in mm)</b></label>
+                            <input type="number" step="0.01" class="form-control" id="Rainfall" name="rainfall" placeholder="Enter the value" style="font-weight: bold" required />
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="Temperature" style="font-size: 17px"><b>Temperature (in Degree)</b></label>
+                            <input type="number" step="0.01" class="form-control" id="Temperature" name="temperature" placeholder="Enter the value" style="font-weight: bold" />
+                        </div>
+                    </div>
+                </div>
 
-        <div class="row">
-          <div class="col-sm">
-            <div class="form-group">
-              <label for="Humidity" style="font-size: 17px"><b>Humidty</b></label>
-              <input type="number" step="0.01" class="form-control" id="Humidity" name="humidity"
-                placeholder="Enter the value" style="font-weight: bold" required />
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-sm">
-            <button type="submit" class="btn btn-lg btn-success btn-block">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="Humidity" style="font-size: 17px"><b>Humidty</b></label>
+                            <input type="number" step="0.01" class="form-control" id="Humidity" name="humidity" placeholder="Enter the value" style="font-weight: bold" />
+                        </div>
+                    </div>
+                </div>
+                <h6 class="text-center">OR</h6>
+                <div class="form-group row">
+                    <div class="col">
+                        <label for="State" style="font-size: 17px"><b>State</b></label>
+                        <select onchange="print_city('state', this.selectedIndex);" id="sts" name="stt" class="form-control" style="font-weight: bold; color: black"></select>
+                    </div>
+                    <div class="col">
+                        <label for="City" style="font-size: 17px"><b>City</b></label>
+                        <select id="state" class="form-control" name="city" style="font-weight: bold; color: black"></select>
+                    </div>
+                    <br>
+                    <script language="javascript">
+                        print_state("sts");
+                    </script>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <button type="submit" class="btn btn-lg btn-success btn-block">
               Predict
             </button>
-          </div>
+                    </div>
+                </div>
+
+            </form>
         </div>
-
-
-
-
-
-
-
-        <!-- <div class="form-group">
-      <label for="State" style="font-size: 17px"><b>State</b></label>
-      <select
-        onchange="print_city('state', this.selectedIndex);"
-        id="sts"
-        name="stt"
-        class="form-control"
-        style="font-weight: bold; color: black"
-        required
-      ></select>
-      <br />
-      <label for="City" style="font-size: 17px"><b>City</b></label>
-      <select
-        id="state"
-        class="form-control"
-        name="city"
-        style="font-weight: bold; color: black"
-        required
-      ></select>
-      <script language="javascript">
-        print_state("sts");
-      </script>
-    </div> -->
-
-      </form>
     </div>
-  </div>
 </div>
 
 
