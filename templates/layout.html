@@ -12,6 +12,14 @@
         html {
             font-size: 1rem;
         }
+
+        .footer-title {
+            color: white;
+        }
+
+        .copyright {
+            font-size: 1rem;
+        }
         
         @media (min-width: 576px) {
             html {
@@ -161,15 +169,20 @@
     </nav>
 
     {% block body %} {% endblock %}
-</body>
-<footer style="background-color: #024033; color: aliceblue;">
-    <div class="text-center">
-        Ⓒ 2022
-    </div>
-    <div class="text-center">
-        <a href="https://storyset.com/">Illustrations by Storyset</a>
-    </div>
 
-</footer>
+    <footer style="background-color: #024033; color: aliceblue;">
+        <div class="text-center pt-5">
+            <p class="footer-title">Agri-Portal</p>
+            <p>Made by Paras, Sahil and Sebin</p>
+            <p class="copyright">© Copyright 2022</p>
+        </div>
+        <div class="text-center pb-5">
+            <p>
+                <a href="https://storyset.com/">Illustrations by Storyset</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
 
 </html>
